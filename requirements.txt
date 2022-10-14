@@ -1,0 +1,4 @@
+timm==0.6.7
+pillow==9.2.0
+matplotlib==3.5.3
+torchprofile==0.0.4
