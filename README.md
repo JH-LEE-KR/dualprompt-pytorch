@@ -49,12 +49,12 @@ To train a model on CIFAR-100 via command line:
 
 Single node with single gpu
 ```
-python -m torch.distributed.launch --nproc_per_node=1 --use_env main.py --model vit_base_patch16_224 --batch-size 16 --data-path /local_datasets/ --output_dir ./output --epochs 5
+python -m torch.distributed.launch --nproc_per_node=1 --use_env main.py --model vit_base_patch16_224 --batch-size 24 --data-path /local_datasets/ --output_dir ./output --epochs 5
 ```
 
 Single node with multi gpus
 ```
-python -m torch.distributed.launch --nproc_per_node=<Num GPUs> --use_env main.py --model vit_base_patch16_224 --batch-size 16 --data-path /local_datasets/ --output_dir ./output --epochs 5
+python -m torch.distributed.launch --nproc_per_node=<Num GPUs> --use_env main.py --model vit_base_patch16_224 --batch-size 24 --data-path /local_datasets/ --output_dir ./output --epochs 5
 ```
 
 Also available in Slurm by changing options on `train.sh`
