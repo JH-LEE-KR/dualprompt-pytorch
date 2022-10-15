@@ -1,7 +1,7 @@
 # DualPrompt Pytorch Implementation
 
 This repository contains PyTorch implementation code for awesome continual learning method <a href="https://arxiv.org/pdf/2204.04799.pdf">DualPrompt</a>, <br>
-proposed in Wang, Zifeng, et al. "DualPrompt: Complementary Prompting for Rehearsal-free Continual Learning." ECCV. 2022.
+Wang, Zifeng, et al. "DualPrompt: Complementary Prompting for Rehearsal-free Continual Learning." ECCV. 2022.
 
 The official Jax implementation is <a href="https://github.com/google-research/l2p">here</a>.
 
@@ -25,7 +25,6 @@ torchvision==0.13.1
 timm==0.6.7
 pillow==9.2.0
 matplotlib==3.5.3
-torchprofile==0.0.4
 ```
 These packages can be installed easily by 
 ```
