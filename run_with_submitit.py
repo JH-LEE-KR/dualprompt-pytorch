@@ -19,21 +19,37 @@ import submitit
 import datetime
 
 def parse_args():
-    dualprompt_parser = dualprompt.get_args_parser()
-    parser = argparse.ArgumentParser("Submitit for multinode training DualPrompt", parents=[dualprompt_parser])
-    parser.add_argument("--shared_folder", type=str, default="", help="Absolute Path of shared folder for all nodes, it must be accessible from all nodes")
-    parser.add_argument("--job_name", type=str, default="dualprompt", help="Job name")
-    parser.add_argument("--nodes", default=2, type=int, help="Number of nodes to request")
-    parser.add_argument("--timeout", default=2800, type=int, help="Duration of the job")
-    parser.add_argument("--job_dir", default="", type=str, help="Job dir. Leave empty for automatic.")
-    parser.add_argument("--nodelist", default="ai1,ai2", type=str, help="Comma separated list of nodes to use")
-    parser.add_argument("--gpus_per_node", default=4, type=int, help="Number of gpus to request on each node")
-    parser.add_argument("--cpus_per_task", default=4, type=int, help="Number of CPUs to request per Task/GPU")
-    parser.add_argument("--mem_gb", default=10, type=int, help="Memory to request for all GPUs")
-    parser.add_argument("--partition", default="", type=str, help="Partition where to submit")
-    parser.add_argument("--use_volta32", action='store_true', help="Big models? Use this")
-    parser.add_argument('--comment', default="", type=str,
+    parser = argparse.ArgumentParser("Submitit for multinode training DualPrompt")
+
+    config = parser.parse_known_args()[-1][0]
+    
+    subparser = parser.add_subparsers(dest='subparser_name')
+
+    if config == 'cifar100_dualprompt':
+        from configs.cifar100_dualprompt import get_args_parser
+        config_parser = subparser.add_parser('cifar100_dualprompt', help='Split-CIFAR100 DualPrompt configs')
+    elif config == 'imr_dualprompt':
+        from configs.imr_dualprompt import get_args_parser
+        config_parser = subparser.add_parser('imr_dualprompt', help='Split-ImageNet-R DualPrompt configs')
+    else:
+        raise NotImplementedError
+
+    config_parser.add_argument("--shared_folder", type=str, default="", help="Absolute Path of shared folder for all nodes, it must be accessible from all nodes")
+    config_parser.add_argument("--job_name", type=str, default="dualprompt", help="Job name")
+    config_parser.add_argument("--nodes", default=2, type=int, help="Number of nodes to request")
+    config_parser.add_argument("--timeout", default=2800, type=int, help="Duration of the job")
+    config_parser.add_argument("--job_dir", default="", type=str, help="Job dir. Leave empty for automatic.")
+    config_parser.add_argument("--nodelist", default="ai1,ai2", type=str, help="Comma separated list of nodes to use")
+    config_parser.add_argument("--gpus_per_node", default=4, type=int, help="Number of gpus to request on each node")
+    config_parser.add_argument("--cpus_per_task", default=4, type=int, help="Number of CPUs to request per Task/GPU")
+    config_parser.add_argument("--mem_gb", default=10, type=int, help="Memory to request for all GPUs")
+    config_parser.add_argument("--partition", default="", type=str, help="Partition where to submit")
+    config_parser.add_argument("--use_volta32", action='store_true', help="Big models? Use this")
+    config_parser.add_argument('--comment', default="", type=str,
                         help='Comment to pass to scheduler, e.g. priority message')
+
+    get_args_parser(config_parser)
+    
     return parser.parse_args()
 
 
