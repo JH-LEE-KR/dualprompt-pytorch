@@ -76,7 +76,7 @@ python -m torch.distributed.launch \
         --epochs 5
 ```
 
-Also available in <a href="https://slurm.schedmd.com/documentation.html">Slurm</a> system by changing options on `train_cifar100_l2p.sh` or `train_five_datasets.sh` properly.
+Also available in <a href="https://slurm.schedmd.com/documentation.html">Slurm</a> system by changing options on `train_cifar100_dualprompt.sh` or `train_imr_dualprompt.sh` properly.
 
 ### Multinode train
 
