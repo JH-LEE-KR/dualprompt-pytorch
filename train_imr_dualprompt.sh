@@ -21,4 +21,4 @@ python -m torch.distributed.launch \
         --batch-size 24 \
         --data-path /local_datasets/ \
         --output_dir ./output \
-        --epochs 5
+        --epochs 50
