@@ -15,7 +15,7 @@ The system I used and tested in
 ## Usage
 First, clone the repository locally:
 ```
-git clone https://github.com/Lee-JH-KR/dualprompt-pytorch
+git clone https://github.com/JH-LEE-KR/dualprompt-pytorch
 cd dualprompt-pytorch
 ```
 Then, install the packages below:
