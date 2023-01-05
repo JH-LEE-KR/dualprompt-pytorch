@@ -57,7 +57,7 @@ python -m torch.distributed.launch \
         --use_env main.py \
         <cifar100_dualprompt or imr_dualprompt> \
         --model vit_base_patch16_224 \
-        --batch-size 16 \
+        --batch-size 24 \
         --data-path /local_datasets/ \
         --output_dir ./output 
 ```
@@ -69,7 +69,7 @@ python -m torch.distributed.launch \
         --use_env main.py \
         <cifar100_dualprompt or imr_dualprompt> \
         --model vit_base_patch16_224 \
-        --batch-size 16 \
+        --batch-size 24 \
         --data-path /local_datasets/ \
         --output_dir ./output 
 ```
